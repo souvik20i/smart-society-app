@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "smart-society-app",
+    "slug": "smart-society-app"
+  }
+}
