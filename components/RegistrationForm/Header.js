@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     bottomLine: {
-        backgroundColor: 'crimson',
+        backgroundColor: '#c92c2c',
         height: 5,
         marginBottom: 30
     }

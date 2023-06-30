@@ -26,11 +26,17 @@ const RegistrationForm = () => {
     }
     const emailChangeHandler = value => {
         setEmail(value)
-        if (value.match('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')) {
+        const reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+        if (value.match(reg)) {
             setIsEmailVaild(true)
         } else {
             setIsEmailVaild(false)
         }
+    }
+
+    const [feedback, setFeedback] = useState('')
+    const feedbackHandler = feedback => {
+        setFeedback(feedback)
     }
 
     return (
@@ -46,6 +52,8 @@ const RegistrationForm = () => {
                 purposeChangeHandler={purposeChangeHandler}
                 isNameValid={isNameValid}
                 isEmailValid={isEmailValid}
+                feedback={feedback}
+                feedbackHandler={feedbackHandler}
             />
         </View>
     );
@@ -54,7 +62,7 @@ const RegistrationForm = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'crimson',
+        backgroundColor: '#c92c2c',
         alignItems: 'center',
         justifyContent: 'center'
     }

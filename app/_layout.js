@@ -15,20 +15,20 @@ export default () => {
             </View>)
         }}
         />
-        <Footer/>
+        <Footer />
     </>)
 }
 
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        backgroundColor: 'crimson',
+        backgroundColor: '#c92c2c',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         padding: StatusBar.currentHeight
     },
     logo: {
-        backgroundColor: 'crimson'
+        backgroundColor: '#c92c2c',
     }
 })

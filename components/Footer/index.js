@@ -7,6 +7,9 @@ const Footer = () => {
             <MaterialCommunityIcons name="copyright" size={15} color="white" />
             <Text style={styles.text}>2023 Company Inc.</Text>
         </View>
+        <View style={styles.vr}>
+
+        </View>
         <View style={styles.block}>
             <Text style={styles.text}>Smart Society</Text>
             <Text style={styles.super}>TM</Text>
@@ -18,20 +21,38 @@ const styles = StyleSheet.create({
     footer: {
         width: '100%',
         backgroundColor: 'black',
-        padding: 7,
         flex: 0.05,
-        flexDirection: "row",
-        justifyContent: "space-between"
+        flexDirection: 'row',
+        padding: 4
     },
     block: {
+        display: 'flex',
         flex: 1,
-        flexDirection: "row",
-        alignItems: 'flex-end'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
+    vr: {
+        borderWidth: 1,
+        borderColor: 'white',
+        height: 20,
+        alignSelf: 'center',
+    },
+    // blockPrimary: {
+    //     display: 'flex',
+    //     flex: 1,
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     color: 'white',
+    //     borderRightWidth: 2,
+    //     borderColor: 'white',
+    // },
     text: {
         color: 'white'
     },
     super: {
+        // color: 'white',
         color: 'white',
         fontSize: 10,
         lineHeight: 30

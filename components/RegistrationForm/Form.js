@@ -8,22 +8,23 @@ import Feedback from './Feedback'
 const Form = ({ name, email, conference, purpose,
     nameChangeHandler, emailChangeHandler,
     conferenceChangeHandler, purposeChangeHandler,
-    isNameValid, isEmailValid }) => {
+    isNameValid, isEmailValid, feedback, feedbackHandler }) => {
 
     return (<View style={styles.form}>
         <Header />
+        <Feedback isValid={!feedback} label={feedback} />
         <TextInput style={styles.input}
             placeholder='Name'
             value={name}
             onChangeText={nameChangeHandler}
         />
-        <Feedback isValid={isNameValid} label={'Name'} />
+        <Feedback isValid={isNameValid} label={'Name is not valid!'} />
         <TextInput style={styles.input}
             placeholder='Email'
             value={email}
             onChangeText={emailChangeHandler}
         />
-        <Feedback isValid={isEmailValid} label={'Email'} />
+        <Feedback isValid={isEmailValid} label={'Email is not valid!'} />
         <Select
             label='Conference'
             options={['IEEE IEMCON', 'IEEE UEMCON', 'IEEE CCWC']}
@@ -38,7 +39,8 @@ const Form = ({ name, email, conference, purpose,
         />
         <Register
             data={{ name, email, conference, purpose }}
-            isDisabled={!isNameValid || !isEmailValid}
+            isDisabled={!isNameValid || !isEmailValid || !name || !email || !conference || !purpose}
+            feedbackHandler={feedbackHandler}
         />
     </View>)
 }

@@ -1,32 +1,38 @@
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const Register = ({ data, isDisabled }) => {
-    const { name, email, conference, purpose } = data
+const Register = ({ data, isDisabled, feedbackHandler }) => {
     const router = useRouter()
-    const registerHandler = () => {
-        try {
-            (async () => {
-                // const response = await fetch('http://192.168.90.88:5000/scan/OTHK97951')
-                const response = await fetch('http://192.168.90.88:5000/generate', {
-                    method: 'POST',
-                    body: { name, email, conferenceName: conference, userType: purpose },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                const resData = await response.json();
-                console.log(resData)
-                // router.push(`/confirm?id=${temp}`)
-            })()
-        } catch (err) {
-            router.push('/error')
-            console.log(err)
+    const { name, email, conference, purpose } = data
+
+    const postConfig = {
+        method: 'post',
+        body: JSON.stringify({ name, email, conferenceName: conference, userType: purpose }),
+        headers: {
+            'Content-Type': 'application/json'
         }
     }
 
+    const generateID = async () => {
+        const response = await fetch('https://registration.smartsociety.org/data/registration', postConfig)
+        // const response = await fetch('http://192.168.90.8:5000/generate', postConfig)
+        const { success, message, id } = await response.json()
+        console.log(message)
+        if (!success) throw new Error(message)
+        router.push(`/confirm?id=${id}`)
+    }
+
+    const catchError = err => {
+        feedbackHandler(err.message)
+        console.log(err)
+    }
+
+    const registerHandler = () => {
+        generateID().catch(catchError)
+    }
+
     return (<TouchableOpacity
-        style={styles.button}
+        style={{ ...styles.button, backgroundColor: !isDisabled ? '#c92c2c' : 'grey' }}
         onPress={registerHandler}
         disabled={isDisabled}
     >
@@ -36,7 +42,6 @@ const Register = ({ data, isDisabled }) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: 'crimson',
         padding: 10,
         borderRadius: 5,
         elevation: 5,
