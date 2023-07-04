@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, ScrollView, StyleSheet } from 'react-native'
 
 import Form from './Form'
 
 const RegistrationForm = () => {
 
-    const [name, setName] = useState('')
+    const [firstname, setFirstname] = useState('')
+    const [lastname, setLastname] = useState('')
     const [email, setEmail] = useState('')
     const [conference, setConference] = useState('')
     const [purpose, setPurpose] = useState('')
@@ -13,17 +14,28 @@ const RegistrationForm = () => {
     const conferenceChangeHandler = value => setConference(value)
     const purposeChangeHandler = value => setPurpose(value)
 
-    const [isNameValid, setIsNameValid] = useState(true)
+    const [isFirstnameValid, setIsFirstnameValid] = useState(true)
+    const [isLastnameValid, setIsLastnameValid] = useState(true)
     const [isEmailValid, setIsEmailVaild] = useState(true)
 
-    const nameChangeHandler = value => {
-        setName(value)
+    const firstnameChangeHandler = value => {
+        setFirstname(value)
         if (isNaN(value)) {
-            setIsNameValid(true)
+            setIsFirstnameValid(true)
         } else {
-            setIsNameValid(false)
+            setIsFirstnameValid(false)
         }
     }
+
+    const lastnameChangeHandler = value => {
+        setLastname(value)
+        if (isNaN(value)) {
+            setIsLastnameValid(true)
+        } else {
+            setIsLastnameValid(false)
+        }
+    }
+
     const emailChangeHandler = value => {
         setEmail(value)
         const reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -40,22 +52,25 @@ const RegistrationForm = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Form
-                name={name}
+                firstname={firstname}
+                lastname={lastname}
                 email={email}
                 conference={conference}
                 purpose={purpose}
-                nameChangeHandler={nameChangeHandler}
+                firstnameChangeHandler={firstnameChangeHandler}
+                lastnameChangeHandler={lastnameChangeHandler}
                 emailChangeHandler={emailChangeHandler}
                 conferenceChangeHandler={conferenceChangeHandler}
                 purposeChangeHandler={purposeChangeHandler}
-                isNameValid={isNameValid}
+                isFirstnameValid={isFirstnameValid}
+                isLastnameValid={isLastnameValid}
                 isEmailValid={isEmailValid}
                 feedback={feedback}
                 feedbackHandler={feedbackHandler}
             />
-        </View>
+        </ScrollView>
     );
 }
 

@@ -1,30 +1,41 @@
 import { View, TextInput, StyleSheet } from 'react-native'
 
 import Header from './Header'
+import Input from './Input'
 import Select from './Select'
 import Register from './Register'
 import Feedback from './Feedback'
 
-const Form = ({ name, email, conference, purpose,
-    nameChangeHandler, emailChangeHandler,
+const Form = ({ firstname, lastname, email, conference, purpose,
+    firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler,
     conferenceChangeHandler, purposeChangeHandler,
-    isNameValid, isEmailValid, feedback, feedbackHandler }) => {
+    isFirstnameValid, isLastnameValid, isEmailValid, 
+    feedback, feedbackHandler }) => {
 
     return (<View style={styles.form}>
         <Header />
         <Feedback isValid={!feedback} label={feedback} />
-        <TextInput style={styles.input}
-            placeholder='Name'
-            value={name}
-            onChangeText={nameChangeHandler}
+        <Input
+            placeholder={'Firstname'}
+            value={firstname}
+            onChangeText={firstnameChangeHandler}
+            isValid={isFirstnameValid}
+            label={'Firstname is not valid!'}
         />
-        <Feedback isValid={isNameValid} label={'Name is not valid!'} />
-        <TextInput style={styles.input}
-            placeholder='Email'
+        <Input
+            placeholder={'Lastname'}
+            value={lastname}
+            onChangeText={lastnameChangeHandler}
+            isValid={isLastnameValid}
+            label={'Name is not valid!'}
+        />
+        <Input
+            placeholder={'Email'}
             value={email}
             onChangeText={emailChangeHandler}
+            isValid={isEmailValid}
+            label={'Email is not valid!'}
         />
-        <Feedback isValid={isEmailValid} label={'Email is not valid!'} />
         <Select
             label='Conference'
             options={['IEEE IEMCON', 'IEEE UEMCON', 'IEEE CCWC']}
@@ -38,8 +49,8 @@ const Form = ({ name, email, conference, purpose,
             onChange={purposeChangeHandler}
         />
         <Register
-            data={{ name, email, conference, purpose }}
-            isDisabled={!isNameValid || !isEmailValid || !name || !email || !conference || !purpose}
+            data={{ firstname,lastname, email, conference, purpose }}
+            isDisabled={!isFirstnameValid || !isLastnameValid || !isEmailValid || !firstname || !lastname || !email || !conference || !purpose}
             feedbackHandler={feedbackHandler}
         />
     </View>)
@@ -63,6 +74,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'black'
     }
-});
+})
 
 export default Form
