@@ -3,23 +3,26 @@ import { useRouter } from 'expo-router';
 
 const Register = ({ data, isDisabled, feedbackHandler }) => {
     const router = useRouter()
-    const { name, email, conference, purpose } = data
+    const {
+        firstname, lastname, email, edasId,
+        conference, purpose, category
+    } = data
 
-    const postConfig = {
-        method: 'post',
-        body: JSON.stringify({ name, email, conferenceName: conference, userType: purpose }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
+    // const postConfig = {
+    //     method: 'post',
+    //     body: JSON.stringify({ name, email, conferenceName: conference, userType: purpose }),
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // }
 
     const generateID = async () => {
-        const response = await fetch('https://registration.smartsociety.org/data/registration', postConfig)
+        // const response = await fetch('https://registration.smartsociety.org/data/registration', postConfig)
         // const response = await fetch('http://192.168.90.8:5000/generate', postConfig)
-        const { success, message, id } = await response.json()
-        console.log(message)
-        if (!success) throw new Error(message)
-        router.push(`/confirm?id=${id}`)
+        // const { success, message, id } = await response.json()
+        // console.log(message)
+        // if (!success) throw new Error(message)
+        // router.push(`/confirm?id=${id}`)
     }
 
     const catchError = err => {
@@ -43,9 +46,11 @@ const Register = ({ data, isDisabled, feedbackHandler }) => {
 const styles = StyleSheet.create({
     button: {
         padding: 10,
-        borderRadius: 5,
-        elevation: 5,
-        marginTop: 30
+        borderRadius: 20,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        elevation: 10,
+        // marginTop: 30
     },
     register: {
         color: 'white',
