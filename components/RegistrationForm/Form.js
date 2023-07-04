@@ -58,7 +58,7 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
             />
             <Select
                 label='Category'
-                options={['IEEE Member', 'IEEE Non-Member', 'Industry', 'IEEE Student Member', 'IEEE Student Non-Member', 'General Attendee']}
+                options={['IEEE Member', 'IEEE Non-Member', 'Industry Member', 'IEEE Student Member', 'IEEE Student Non-Member', 'General Attendee']}
                 value={category}
                 onChange={categoryChangeHandler}
             />
