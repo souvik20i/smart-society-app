@@ -23,6 +23,7 @@ const RegistrationForm = () => {
     const [isEdasIdValid, setIsEdasIdVaild] = useState(true)
 
     const firstnameChangeHandler = value => {
+        value = value.trim()
         setFirstname(value)
         if (isNaN(value)) {
             setIsFirstnameValid(true)
@@ -32,6 +33,7 @@ const RegistrationForm = () => {
     }
 
     const lastnameChangeHandler = value => {
+        value = value.trim()
         setLastname(value)
         if (isNaN(value)) {
             setIsLastnameValid(true)
@@ -41,6 +43,7 @@ const RegistrationForm = () => {
     }
 
     const emailChangeHandler = value => {
+        value = value.trim()
         setEmail(value)
         const regexp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         if (value.match(regexp)) {

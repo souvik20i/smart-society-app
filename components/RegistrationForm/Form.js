@@ -41,6 +41,8 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
                 onChangeText={edasIdChangeHandler}
                 isValid={isEdasIdValid}
                 label={'EDAS ID is not vaild!'}
+                maxLength={7}
+                numeric
             />
             <Select
                 label='Conference'

@@ -2,12 +2,16 @@ import { TextInput, StyleSheet } from 'react-native'
 import Feedback from './Feedback'
 
 
-const Input = ({ placeholder, value, onChangeText, isValid, label }) => {
+const Input = ({ placeholder, value, onChangeText,
+    isValid, label, maxLength = 1000, numeric = false }) => {
+
     return (<>
         <TextInput style={styles.input}
             placeholder={placeholder}
             value={value}
             onChangeText={onChangeText}
+            maxLength={maxLength}
+            keyboardType={numeric ? 'numeric' : 'default'}
         />
         <Feedback isValid={isValid} label={label} />
     </>)
