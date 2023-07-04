@@ -1,20 +1,18 @@
-import { View, TextInput, StyleSheet } from 'react-native'
+import { View, ScrollView, StyleSheet } from 'react-native'
 
 import Header from './Header'
 import Input from './Input'
 import Select from './Select'
 import Register from './Register'
-import Feedback from './Feedback'
 
-const Form = ({ firstname, lastname, email, conference, purpose,
+const Form = ({ firstname, lastname, email, conference, purpose, category,
     firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler,
-    conferenceChangeHandler, purposeChangeHandler,
-    isFirstnameValid, isLastnameValid, isEmailValid, 
+    conferenceChangeHandler, purposeChangeHandler, categoryChangeHandler,
+    isFirstnameValid, isLastnameValid, isEmailValid,
     feedback, feedbackHandler }) => {
 
-    return (<View style={styles.form}>
-        <Header />
-        <Feedback isValid={!feedback} label={feedback} />
+    return (<ScrollView style={styles.form}>
+        <Header isOk={!feedback} feedback={feedback} />
         <Input
             placeholder={'Firstname'}
             value={firstname}
@@ -27,7 +25,7 @@ const Form = ({ firstname, lastname, email, conference, purpose,
             value={lastname}
             onChangeText={lastnameChangeHandler}
             isValid={isLastnameValid}
-            label={'Name is not valid!'}
+            label={'Lastname is not valid!'}
         />
         <Input
             placeholder={'Email'}
@@ -48,31 +46,33 @@ const Form = ({ firstname, lastname, email, conference, purpose,
             value={purpose}
             onChange={purposeChangeHandler}
         />
+        <Select
+            label='Category'
+            options={['IEEE Member', 'IEEE Non-Member', 'Industry', 'IEEE Student Member', 'IEEE Student Non-Member', 'General Attendee']}
+            value={category}
+            onChange={categoryChangeHandler}
+        />
         <Register
-            data={{ firstname,lastname, email, conference, purpose }}
+            data={{ firstname, lastname, email, conference, purpose }}
             isDisabled={!isFirstnameValid || !isLastnameValid || !isEmailValid || !firstname || !lastname || !email || !conference || !purpose}
             feedbackHandler={feedbackHandler}
         />
-    </View>)
+        <View style={styles.space} />
+    </ScrollView>)
 }
 
 const styles = StyleSheet.create({
     form: {
         width: '90%',
+        height: '60%',
         padding: 30,
         borderRadius: 20,
         backgroundColor: 'white',
         elevation: 10
     },
-    input: {
-        paddingVertical: 10,
-        paddingHorizontal: 15,
-        borderWidth: 1,
-        borderColor: 'grey',
-        borderRadius: 10,
-        marginVertical: 10,
-        fontSize: 15,
-        color: 'black'
+    space: {
+        width: '100%',
+        height: 100
     }
 })
 

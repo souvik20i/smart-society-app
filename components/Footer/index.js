@@ -8,7 +8,6 @@ const Footer = () => {
             <Text style={styles.text}>2023 Company Inc.</Text>
         </View>
         <View style={styles.vr}>
-
         </View>
         <View style={styles.block}>
             <Text style={styles.text}>Smart Society</Text>

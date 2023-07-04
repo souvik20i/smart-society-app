@@ -1,9 +1,12 @@
 import { View, Text, StyleSheet } from "react-native"
+import Feedback from './Feedback'
 
-const Header = () => {
+
+const Header = ({ isOk, feedback }) => {
     return (<>
         <Text style={styles.header}>Registration Form</Text>
         <View style={styles.bottomLine} />
+        <Feedback isValid={isOk} label={feedback} />
     </>)
 }
 

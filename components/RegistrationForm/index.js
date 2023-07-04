@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import Form from './Form'
 
@@ -10,9 +10,11 @@ const RegistrationForm = () => {
     const [email, setEmail] = useState('')
     const [conference, setConference] = useState('')
     const [purpose, setPurpose] = useState('')
+    const [category, setCategory] = useState('')
 
     const conferenceChangeHandler = value => setConference(value)
     const purposeChangeHandler = value => setPurpose(value)
+    const categoryChangeHandler = value => setCategory(value)
 
     const [isFirstnameValid, setIsFirstnameValid] = useState(true)
     const [isLastnameValid, setIsLastnameValid] = useState(true)
@@ -52,25 +54,27 @@ const RegistrationForm = () => {
     }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.container}>
             <Form
                 firstname={firstname}
                 lastname={lastname}
                 email={email}
                 conference={conference}
                 purpose={purpose}
+                category={category}
                 firstnameChangeHandler={firstnameChangeHandler}
                 lastnameChangeHandler={lastnameChangeHandler}
                 emailChangeHandler={emailChangeHandler}
                 conferenceChangeHandler={conferenceChangeHandler}
                 purposeChangeHandler={purposeChangeHandler}
+                categoryChangeHandler={categoryChangeHandler}
                 isFirstnameValid={isFirstnameValid}
                 isLastnameValid={isLastnameValid}
                 isEmailValid={isEmailValid}
                 feedback={feedback}
                 feedbackHandler={feedbackHandler}
             />
-        </ScrollView>
+        </View>
     );
 }
 
