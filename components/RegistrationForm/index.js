@@ -11,6 +11,7 @@ const RegistrationForm = () => {
     const [conference, setConference] = useState('')
     const [purpose, setPurpose] = useState('')
     const [category, setCategory] = useState('')
+    const [edasId, setEdasId] = useState('')
 
     const conferenceChangeHandler = value => setConference(value)
     const purposeChangeHandler = value => setPurpose(value)
@@ -19,6 +20,7 @@ const RegistrationForm = () => {
     const [isFirstnameValid, setIsFirstnameValid] = useState(true)
     const [isLastnameValid, setIsLastnameValid] = useState(true)
     const [isEmailValid, setIsEmailVaild] = useState(true)
+    const [isEdasIdValid, setIsEdasIdVaild] = useState(true)
 
     const firstnameChangeHandler = value => {
         setFirstname(value)
@@ -40,11 +42,21 @@ const RegistrationForm = () => {
 
     const emailChangeHandler = value => {
         setEmail(value)
-        const reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-        if (value.match(reg)) {
+        const regexp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+        if (value.match(regexp)) {
             setIsEmailVaild(true)
         } else {
             setIsEmailVaild(false)
+        }
+    }
+
+    const edasIdChangeHandler = value => {
+        setEdasId(value)
+        const regexp = /^\d{7}$/
+        if (value.match(regexp)) {
+            setIsEdasIdVaild(true)
+        } else {
+            setIsEdasIdVaild(false)
         }
     }
 
@@ -59,18 +71,21 @@ const RegistrationForm = () => {
                 firstname={firstname}
                 lastname={lastname}
                 email={email}
+                edasId={edasId}
                 conference={conference}
                 purpose={purpose}
                 category={category}
                 firstnameChangeHandler={firstnameChangeHandler}
                 lastnameChangeHandler={lastnameChangeHandler}
                 emailChangeHandler={emailChangeHandler}
+                edasIdChangeHandler={edasIdChangeHandler}
                 conferenceChangeHandler={conferenceChangeHandler}
                 purposeChangeHandler={purposeChangeHandler}
                 categoryChangeHandler={categoryChangeHandler}
                 isFirstnameValid={isFirstnameValid}
                 isLastnameValid={isLastnameValid}
                 isEmailValid={isEmailValid}
+                isEdasIdValid={isEdasIdValid}
                 feedback={feedback}
                 feedbackHandler={feedbackHandler}
             />

@@ -5,10 +5,10 @@ import Input from './Input'
 import Select from './Select'
 import Register from './Register'
 
-const Form = ({ firstname, lastname, email, conference, purpose, category,
-    firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler,
-    conferenceChangeHandler, purposeChangeHandler, categoryChangeHandler,
-    isFirstnameValid, isLastnameValid, isEmailValid,
+const Form = ({ firstname, lastname, email, edasId, conference, purpose, category,
+    firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler, conferenceChangeHandler,
+    purposeChangeHandler, categoryChangeHandler, edasIdChangeHandler,
+    isFirstnameValid, isLastnameValid, isEmailValid, isEdasIdValid,
     feedback, feedbackHandler }) => {
 
     return (<ScrollView style={styles.form}>
@@ -34,6 +34,13 @@ const Form = ({ firstname, lastname, email, conference, purpose, category,
             isValid={isEmailValid}
             label={'Email is not valid!'}
         />
+        <Input
+            placeholder={'7 digit EDAS ID'}
+            value={edasId}
+            onChangeText={edasIdChangeHandler}
+            isValid={isEdasIdValid}
+            label={'EDAS ID is not vaild!'}
+        />
         <Select
             label='Conference'
             options={['IEEE IEMCON', 'IEEE UEMCON', 'IEEE CCWC']}
@@ -54,7 +61,10 @@ const Form = ({ firstname, lastname, email, conference, purpose, category,
         />
         <Register
             data={{ firstname, lastname, email, conference, purpose }}
-            isDisabled={!isFirstnameValid || !isLastnameValid || !isEmailValid || !firstname || !lastname || !email || !conference || !purpose}
+            isDisabled={
+                !isFirstnameValid || !isLastnameValid || !isEmailValid || !isEdasIdValid ||
+                !firstname || !lastname || !email || !edasId || !conference || !purpose || !category
+            }
             feedbackHandler={feedbackHandler}
         />
         <View style={styles.space} />
