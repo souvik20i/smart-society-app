@@ -12,7 +12,7 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
     feedback, feedbackHandler }) => {
 
     return (<View style={styles.container}>
-        <ScrollView style={styles.form}>
+        <ScrollView style={styles.form} showsVerticalScrollIndicator={false}>
             <Header isOk={!feedback} feedback={feedback} />
             <Input
                 placeholder={'Firstname'}
@@ -58,7 +58,10 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
             />
             <Select
                 label='Category'
-                options={['IEEE Member', 'IEEE Non-Member', 'Industry Member', 'IEEE Student Member', 'IEEE Student Non-Member', 'General Attendee']}
+                options={[
+                    'Attnd_Gen_EB', 'Attnd_Gen_Reg', 'Attnd_IEEESM_EB', 'Attnd_IEEESM_Reg', 'Attnd_IEEEM_EB', 'Attnd_IEEEM_Reg',
+                    'Auth_IEEEM_EB','Auth_IEEEM_Reg','Auth_Gen_EB','Auth_Gen_Reg','Auth_Industry_EB','Auth_Industry_Reg'
+                ]}
                 value={category}
                 onChange={categoryChangeHandler}
             />
