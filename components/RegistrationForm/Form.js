@@ -59,8 +59,8 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
             <Select
                 label='Category'
                 options={[
-                    'Attnd_Gen_EB', 'Attnd_Gen_Reg', 'Attnd_IEEESM_EB', 'Attnd_IEEESM_Reg', 'Attnd_IEEEM_EB', 'Attnd_IEEEM_Reg',
-                    'Auth_IEEEM_EB','Auth_IEEEM_Reg','Auth_Gen_EB','Auth_Gen_Reg','Auth_Industry_EB','Auth_Industry_Reg'
+                    'C1: Attnd_Gen_EB', 'C2: Attnd_Gen_Reg', 'C3: Attnd_IEEESM_EB', 'C4: Attnd_IEEESM_Reg', 'C5: Attnd_IEEEM_EB', 'C6: Attnd_IEEEM_Reg',
+                    'C7: Auth_IEEEM_EB','C8: Auth_IEEEM_Reg','C9: Auth_Gen_EB','C10: Auth_Gen_Reg','C11: Auth_Industry_EB','C12: Auth_Industry_Reg'
                 ]}
                 value={category}
                 onChange={categoryChangeHandler}

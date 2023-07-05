@@ -5,7 +5,7 @@ const Footer = () => {
     return (<View style={styles.footer}>
         <View style={styles.block}>
             <MaterialCommunityIcons name="copyright" size={15} color="white" />
-            <Text style={styles.text}>2023 Company Inc.</Text>
+            <Text style={styles.text}>2023 Company, Inc.</Text>
         </View>
         <View style={styles.vr}>
         </View>
@@ -18,11 +18,10 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
     footer: {
-        width: '100%',
-        backgroundColor: 'black',
         flex: 0.05,
         flexDirection: 'row',
-        padding: 4
+        padding: 4,
+        backgroundColor: '#0f0f0f'
     },
     block: {
         display: 'flex',
@@ -37,24 +36,13 @@ const styles = StyleSheet.create({
         height: 20,
         alignSelf: 'center',
     },
-    // blockPrimary: {
-    //     display: 'flex',
-    //     flex: 1,
-    //     flexDirection: 'row',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     color: 'white',
-    //     borderRightWidth: 2,
-    //     borderColor: 'white',
-    // },
     text: {
         color: 'white'
     },
     super: {
-        // color: 'white',
         color: 'white',
         fontSize: 10,
-        lineHeight: 30
+        lineHeight: 10
     }
 })
 
