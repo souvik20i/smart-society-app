@@ -1,8 +1,10 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, Text, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const Register = ({ data, isValidForm, onFeedback, onLoading }) => {
+const Register = ({ data, isValidForm, onFeedback }) => {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
     const {
         firstname: fName, lastname: lName, email, edasId,
         conference: conferenceName, purpose: userType, category: regCategory
@@ -17,11 +19,12 @@ const Register = ({ data, isValidForm, onFeedback, onLoading }) => {
     }
 
     const generateID = async () => {
+        setIsLoading(true)
         const response = await fetch('https://registration.smartsociety.org/data/registration', postConfig)
         const { id, message, success } = await response.json()
-        console.log(id, message, success)
         if (!success) throw new Error(message)
         router.push(`/confirm?id=${id}`)
+        setIsLoading(false)
     }
 
     const registerHandler = () => {
@@ -29,9 +32,7 @@ const Register = ({ data, isValidForm, onFeedback, onLoading }) => {
             onFeedback("All fields are mandatory!")
             return
         }
-        onLoading(true)
         generateID().catch(err => onFeedback(err.message))
-        onLoading(false)
     }
 
     return (<View style={{
@@ -39,13 +40,19 @@ const Register = ({ data, isValidForm, onFeedback, onLoading }) => {
         backgroundColor: isValidForm ? '#1520a6' : 'grey'
     }}>
         <TouchableOpacity onPress={registerHandler}>
-            <Text style={styles.register}>Register</Text>
+            {isLoading ?
+                <ActivityIndicator style={styles.loader} color={'white'} size={30} />
+                :
+                <Text style={styles.register}>Register</Text>
+            }
         </TouchableOpacity>
     </View>)
 }
 
 const styles = StyleSheet.create({
     button: {
+        height: 50,
+        justifyContent: 'center',
         borderRadius: 20,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
@@ -54,8 +61,7 @@ const styles = StyleSheet.create({
     register: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 20,
-        padding: 10,
+        fontSize: 20
     }
 })
 

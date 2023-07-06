@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import Form from './Form'
 
@@ -68,36 +68,30 @@ const RegistrationForm = () => {
         setFeedback(feedback)
     }
 
-    const [isLoading, setIsLoading] = useState(false)
-    const loadingHandler = value => setIsLoading(value)
-
     return (
         <View style={styles.container}>
-            {isLoading ? <ActivityIndicator color={'white'} size={50} /> :
-                <Form
-                    firstname={firstname}
-                    lastname={lastname}
-                    email={email}
-                    edasId={edasId}
-                    conference={conference}
-                    purpose={purpose}
-                    category={category}
-                    firstnameChangeHandler={firstnameChangeHandler}
-                    lastnameChangeHandler={lastnameChangeHandler}
-                    emailChangeHandler={emailChangeHandler}
-                    edasIdChangeHandler={edasIdChangeHandler}
-                    conferenceChangeHandler={conferenceChangeHandler}
-                    purposeChangeHandler={purposeChangeHandler}
-                    categoryChangeHandler={categoryChangeHandler}
-                    isFirstnameValid={isFirstnameValid}
-                    isLastnameValid={isLastnameValid}
-                    isEmailValid={isEmailValid}
-                    isEdasIdValid={isEdasIdValid}
-                    feedback={feedback}
-                    feedbackHandler={feedbackHandler}
-                    loadingHandler={loadingHandler}
-                />
-            }
+            <Form
+                firstname={firstname}
+                lastname={lastname}
+                email={email}
+                edasId={edasId}
+                conference={conference}
+                purpose={purpose}
+                category={category}
+                firstnameChangeHandler={firstnameChangeHandler}
+                lastnameChangeHandler={lastnameChangeHandler}
+                emailChangeHandler={emailChangeHandler}
+                edasIdChangeHandler={edasIdChangeHandler}
+                conferenceChangeHandler={conferenceChangeHandler}
+                purposeChangeHandler={purposeChangeHandler}
+                categoryChangeHandler={categoryChangeHandler}
+                isFirstnameValid={isFirstnameValid}
+                isLastnameValid={isLastnameValid}
+                isEmailValid={isEmailValid}
+                isEdasIdValid={isEdasIdValid}
+                feedback={feedback}
+                feedbackHandler={feedbackHandler}
+            />
         </View>
     );
 }
