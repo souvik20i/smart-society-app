@@ -4,13 +4,13 @@ import { useRouter } from 'expo-router';
 const Register = ({ data, isValidForm, onFeedback }) => {
     const router = useRouter()
     const {
-        firstname, lastname, email, edasId,
-        conference, purpose, category
+        firstname: FName, lastname: lName, email, edasId,
+        conference: conferenceName, purpose: userType, category: regCategory
     } = data
 
     const postConfig = {
         method: 'post',
-        // body: JSON.stringify({ name, email, conferenceName: conference, userType: purpose }),
+        body: JSON.stringify({ FName, lName, email, conferenceName, userType, edasId, regCategory }),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -18,9 +18,7 @@ const Register = ({ data, isValidForm, onFeedback }) => {
 
     const generateID = async () => {
         const response = await fetch('https://registration.smartsociety.org/data/registration', postConfig)
-        // const response = await fetch('http://192.168.90.8:5000/generate', postConfig)
-        const { success, message, id } = await response.json()
-        console.log(message)
+        const { id, message, success } = await response.json()
         if (!success) throw new Error(message)
         router.push(`/confirm?id=${id}`)
     }
@@ -31,11 +29,11 @@ const Register = ({ data, isValidForm, onFeedback }) => {
     }
 
     const registerHandler = () => {
-        if(!isValidForm){
+        if (!isValidForm) {
             onFeedback("All fields are mandatory!")
             return
         }
-        // generateID().catch(catchError)
+        generateID().catch(catchError)
     }
 
     return (<View style={{
