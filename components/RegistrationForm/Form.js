@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 
 import Header from './Header'
@@ -11,8 +12,17 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
     isFirstnameValid, isLastnameValid, isEmailValid, isEdasIdValid,
     feedback, feedbackHandler }) => {
 
+    const scrollRef = useRef()
+    const scrollFeedbackHandler = message => {
+        feedbackHandler(message)
+        scrollRef.current.scrollTo({
+            y: 0,
+            animated: true
+        })
+    }
+
     return (<View style={styles.container}>
-        <ScrollView style={styles.form} showsVerticalScrollIndicator={false}>
+        <ScrollView style={styles.form} ref={scrollRef} showsVerticalScrollIndicator={false}>
             <Header isOk={!feedback} feedback={feedback} />
             <Input
                 placeholder={'Firstname'}
@@ -59,8 +69,8 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
             <Select
                 label='Category'
                 options={[
-                    'C1: Attnd_Gen_EB', 'C2: Attnd_Gen_Reg', 'C3: Attnd_IEEESM_EB', 'C4: Attnd_IEEESM_Reg', 'C5: Attnd_IEEEM_EB', 'C6: Attnd_IEEEM_Reg',
-                    'C7: Auth_IEEEM_EB','C8: Auth_IEEEM_Reg','C9: Auth_Gen_EB','C10: Auth_Gen_Reg','C11: Auth_Industry_EB','C12: Auth_Industry_Reg'
+                    'C1 : Attnd_Gen_EB', 'C2 : Attnd_Gen_Reg', 'C3 : Attnd_IEEESM_EB', 'C4 : Attnd_IEEESM_Reg', 'C5 : Attnd_IEEEM_EB', 'C6 : Attnd_IEEEM_Reg',
+                    'C7 : Auth_IEEEM_EB', 'C8 : Auth_IEEEM_Reg', 'C9 : Auth_Gen_EB', 'C10 : Auth_Gen_Reg', 'C11 : Auth_Industry_EB', 'C12 : Auth_Industry_Reg'
                 ]}
                 value={category}
                 onChange={categoryChangeHandler}
@@ -69,11 +79,11 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
         </ScrollView>
         <Register
             data={{ firstname, lastname, email, edasId, conference, purpose, category }}
-            isDisabled={
-                !isFirstnameValid || !isLastnameValid || !isEmailValid || !isEdasIdValid ||
-                !firstname || !lastname || !email || !edasId || !conference || !purpose || !category
+            isValidForm={
+                isFirstnameValid && isLastnameValid && isEmailValid && isEdasIdValid &&
+                firstname && lastname && email && edasId && conference && purpose && category
             }
-            feedbackHandler={feedbackHandler}
+            onFeedback={scrollFeedbackHandler}
         />
         <View style={{ height: 10 }} />
     </View>)

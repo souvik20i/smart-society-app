@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const Register = ({ data, isDisabled, feedbackHandler }) => {
+const Register = ({ data, isValidForm, onFeedback }) => {
     const router = useRouter()
     const {
         firstname, lastname, email, edasId,
@@ -26,19 +26,23 @@ const Register = ({ data, isDisabled, feedbackHandler }) => {
     }
 
     const catchError = err => {
-        feedbackHandler(err.message)
+        onFeedback(err.message)
         console.log(err)
     }
 
     const registerHandler = () => {
+        if(!isValidForm){
+            onFeedback("All fields are mandatory!")
+            return
+        }
         // generateID().catch(catchError)
     }
 
     return (<View style={{
         ...styles.button,
-        backgroundColor: !isDisabled ? '#1520a6' : 'grey'
+        backgroundColor: isValidForm ? '#1520a6' : 'grey'
     }}>
-        <TouchableOpacity disabled={isDisabled} onPress={registerHandler}>
+        <TouchableOpacity onPress={registerHandler}>
             <Text style={styles.register}>Register</Text>
         </TouchableOpacity>
     </View>)
