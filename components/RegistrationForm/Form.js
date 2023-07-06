@@ -10,7 +10,7 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
     firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler, conferenceChangeHandler,
     purposeChangeHandler, categoryChangeHandler, edasIdChangeHandler,
     isFirstnameValid, isLastnameValid, isEmailValid, isEdasIdValid,
-    feedback, feedbackHandler }) => {
+    feedback, feedbackHandler, loadingHandler }) => {
 
     const scrollRef = useRef()
     const scrollFeedbackHandler = message => {
@@ -84,6 +84,7 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
                 firstname && lastname && email && edasId && conference && purpose && category
             }
             onFeedback={scrollFeedbackHandler}
+            onLoading={loadingHandler}
         />
         <View style={{ height: 10 }} />
     </View>)
