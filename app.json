@@ -4,7 +4,7 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "smart-society-app",
+    "name": "SMART Conference Registration",
     "slug": "smart-society-app",
     "icon": "./public/smart.png",
     "extra": {
