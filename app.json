@@ -5,6 +5,15 @@
       "bundler": "metro"
     },
     "name": "smart-society-app",
-    "slug": "smart-society-app"
+    "slug": "smart-society-app",
+    "icon": "./public/smart.png",
+    "extra": {
+      "eas": {
+        "projectId": "e43541c9-894a-4636-b6ac-8e37bcd9bbbd"
+      }
+    },
+    "android": {
+      "package": "com.souvik720i.smartsocietyapp"
+    }
   }
 }
