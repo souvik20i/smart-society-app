@@ -14,6 +14,16 @@
     },
     "android": {
       "package": "com.souvik720i.smartsocietyapp"
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableProguardInReleaseBuilds": true
+          }
+        }
+      ]
+    ]
   }
 }
