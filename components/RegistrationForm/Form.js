@@ -6,9 +6,9 @@ import Input from './Input'
 import Select from './Select'
 import Register from './Register'
 
-const Form = ({ firstname, lastname, email, edasId, conference, purpose, category,
-    firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler, conferenceChangeHandler,
-    purposeChangeHandler, categoryChangeHandler, edasIdChangeHandler,
+const Form = ({ firstname, lastname, email, edasId, conference, category,
+    firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler,
+    conferenceChangeHandler, categoryChangeHandler, edasIdChangeHandler,
     isFirstnameValid, isLastnameValid, isEmailValid, isEdasIdValid,
     feedback, feedbackHandler }) => {
 
@@ -61,12 +61,6 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
                 onChange={conferenceChangeHandler}
             />
             <Select
-                label='Purpose'
-                options={['Student', 'Attendee', 'Presentor']}
-                value={purpose}
-                onChange={purposeChangeHandler}
-            />
-            <Select
                 label='Category'
                 options={[
                     'C1 : Attnd_Gen_EB', 'C2 : Attnd_Gen_Reg', 'C3 : Attnd_IEEESM_EB', 'C4 : Attnd_IEEESM_Reg', 'C5 : Attnd_IEEEM_EB', 'C6 : Attnd_IEEEM_Reg',
@@ -78,10 +72,10 @@ const Form = ({ firstname, lastname, email, edasId, conference, purpose, categor
             <View style={{ height: 50 }} />
         </ScrollView>
         <Register
-            data={{ firstname, lastname, email, edasId, conference, purpose, category }}
+            data={{ firstname, lastname, email, edasId, conference, category }}
             isValidForm={
                 isFirstnameValid && isLastnameValid && isEmailValid && isEdasIdValid &&
-                firstname && lastname && email && edasId && conference && purpose && category
+                firstname && lastname && email && edasId && conference && category
             }
             onFeedback={scrollFeedbackHandler}
         />

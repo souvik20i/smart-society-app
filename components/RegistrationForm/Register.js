@@ -7,15 +7,13 @@ const Register = ({ data, isValidForm, onFeedback }) => {
     const [isLoading, setIsLoading] = useState(false)
     const {
         firstname: fName, lastname: lName, email, edasId,
-        conference: conferenceName, purpose: userType, category: regCategory
+        conference: conferenceName, category: regCategory
     } = data
 
     const postConfig = {
         method: 'post',
-        body: JSON.stringify({ fName, lName, email, conferenceName, userType, edasId, regCategory }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        body: JSON.stringify({ fName, lName, email, conferenceName, userType: 'Attendee', edasId, regCategory }),
+        headers: { 'Content-Type': 'application/json' }
     }
 
     const generateID = async () => {
@@ -23,7 +21,7 @@ const Register = ({ data, isValidForm, onFeedback }) => {
         const response = await fetch('https://registration.smartsociety.org/data/registration', postConfig)
         const { id, message, success } = await response.json()
         if (!success) throw new Error(message)
-        router.push(`/confirm?id=${id}`)
+        router.replace(`/confirm?id=${id}`)
         setIsLoading(false)
     }
 
@@ -32,7 +30,10 @@ const Register = ({ data, isValidForm, onFeedback }) => {
             onFeedback("All fields are mandatory!")
             return
         }
-        generateID().catch(err => onFeedback(err.message))
+        generateID().catch(err => {
+            onFeedback(err.message)
+            setIsLoading(false)
+        })
     }
 
     return (<View style={{

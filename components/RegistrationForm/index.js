@@ -9,12 +9,10 @@ const RegistrationForm = () => {
     const [lastname, setLastname] = useState('')
     const [email, setEmail] = useState('')
     const [conference, setConference] = useState('')
-    const [purpose, setPurpose] = useState('')
     const [category, setCategory] = useState('')
     const [edasId, setEdasId] = useState('')
 
     const conferenceChangeHandler = value => setConference(value)
-    const purposeChangeHandler = value => setPurpose(value)
     const categoryChangeHandler = value => setCategory(value)
 
     const [isFirstnameValid, setIsFirstnameValid] = useState(true)
@@ -55,8 +53,8 @@ const RegistrationForm = () => {
 
     const edasIdChangeHandler = value => {
         setEdasId(value)
-        const regexp = /^\d{7}$/
-        if (value.match(regexp)) {
+        const regex = /^\d{7}$/
+        if (value.match(regex)) {
             setIsEdasIdVaild(true)
         } else {
             setIsEdasIdVaild(false)
@@ -76,14 +74,12 @@ const RegistrationForm = () => {
                 email={email}
                 edasId={edasId}
                 conference={conference}
-                purpose={purpose}
                 category={category}
                 firstnameChangeHandler={firstnameChangeHandler}
                 lastnameChangeHandler={lastnameChangeHandler}
                 emailChangeHandler={emailChangeHandler}
                 edasIdChangeHandler={edasIdChangeHandler}
                 conferenceChangeHandler={conferenceChangeHandler}
-                purposeChangeHandler={purposeChangeHandler}
                 categoryChangeHandler={categoryChangeHandler}
                 isFirstnameValid={isFirstnameValid}
                 isLastnameValid={isLastnameValid}
@@ -93,7 +89,7 @@ const RegistrationForm = () => {
                 feedbackHandler={feedbackHandler}
             />
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
