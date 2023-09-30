@@ -9,7 +9,7 @@
     "icon": "./public/smart.png",
     "extra": {
       "eas": {
-        "projectId": "e43541c9-894a-4636-b6ac-8e37bcd9bbbd"
+        "projectId": "dcd89ee0-e22b-4b25-be74-dec2af6a3ac3"
       }
     },
     "android": {
