@@ -7,13 +7,18 @@
     "name": "SMART Conference Registration",
     "slug": "smart-society-app",
     "icon": "./public/smart.png",
+    "version": "2.0.3",
     "extra": {
       "eas": {
-        "projectId": "e43541c9-894a-4636-b6ac-8e37bcd9bbbd"
+        "projectId": "ed5b6116-903f-40d0-a763-15f67467c48f"
       }
     },
     "android": {
       "package": "com.souvik720i.smartsocietyapp"
+    },
+    "ios": {
+      "buildNumber": "2.0.3",
+      "bundleIdentifier": "com.siddharth.smart"
     },
     "plugins": [
       [
