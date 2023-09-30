@@ -6,9 +6,9 @@ import Input from './Input'
 import Select from './Select'
 import Register from './Register'
 
-const Form = ({ firstname, lastname, email, edasId, conference, category,
+const Form = ({ firstname, lastname, email, edasId, conference,
     firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler,
-    conferenceChangeHandler, categoryChangeHandler, edasIdChangeHandler,
+    conferenceChangeHandler, edasIdChangeHandler,
     isFirstnameValid, isLastnameValid, isEmailValid, isEdasIdValid,
     feedback, feedbackHandler }) => {
 
@@ -60,22 +60,13 @@ const Form = ({ firstname, lastname, email, edasId, conference, category,
                 value={conference}
                 onChange={conferenceChangeHandler}
             />
-            <Select
-                label='Category'
-                options={[
-                    'C1 : Attnd_Gen_EB', 'C2 : Attnd_Gen_Reg', 'C3 : Attnd_IEEESM_EB', 'C4 : Attnd_IEEESM_Reg', 'C5 : Attnd_IEEEM_EB', 'C6 : Attnd_IEEEM_Reg',
-                    'C7 : Auth_IEEEM_EB', 'C8 : Auth_IEEEM_Reg', 'C9 : Auth_Gen_EB', 'C10 : Auth_Gen_Reg', 'C11 : Auth_Industry_EB', 'C12 : Auth_Industry_Reg'
-                ]}
-                value={category}
-                onChange={categoryChangeHandler}
-            />
             <View style={{ height: 50 }} />
         </ScrollView>
         <Register
-            data={{ firstname, lastname, email, edasId, conference, category }}
+            data={{ firstname, lastname, email, edasId, conference }}
             isValidForm={
                 isFirstnameValid && isLastnameValid && isEmailValid && isEdasIdValid &&
-                firstname && lastname && email && edasId && conference && category
+                firstname && lastname && email && edasId && conference
             }
             onFeedback={scrollFeedbackHandler}
         />
