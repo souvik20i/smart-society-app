@@ -9,11 +9,9 @@ const RegistrationForm = () => {
     const [lastname, setLastname] = useState('')
     const [email, setEmail] = useState('')
     const [conference, setConference] = useState('')
-    const [category, setCategory] = useState('')
     const [edasId, setEdasId] = useState('')
 
     const conferenceChangeHandler = value => setConference(value)
-    const categoryChangeHandler = value => setCategory(value)
 
     const [isFirstnameValid, setIsFirstnameValid] = useState(true)
     const [isLastnameValid, setIsLastnameValid] = useState(true)
@@ -74,13 +72,11 @@ const RegistrationForm = () => {
                 email={email}
                 edasId={edasId}
                 conference={conference}
-                category={category}
                 firstnameChangeHandler={firstnameChangeHandler}
                 lastnameChangeHandler={lastnameChangeHandler}
                 emailChangeHandler={emailChangeHandler}
                 edasIdChangeHandler={edasIdChangeHandler}
                 conferenceChangeHandler={conferenceChangeHandler}
-                categoryChangeHandler={categoryChangeHandler}
                 isFirstnameValid={isFirstnameValid}
                 isLastnameValid={isLastnameValid}
                 isEmailValid={isEmailValid}
