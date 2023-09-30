@@ -7,12 +7,12 @@ const Register = ({ data, isValidForm, onFeedback }) => {
     const [isLoading, setIsLoading] = useState(false)
     const {
         firstname: fName, lastname: lName, email, edasId,
-        conference: conferenceName, category: regCategory
+        conference: conferenceName
     } = data
 
     const postConfig = {
         method: 'post',
-        body: JSON.stringify({ fName, lName, email, conferenceName, userType: 'Attendee', edasId, regCategory }),
+        body: JSON.stringify({ fName, lName, email, conferenceName, edasId }),
         headers: { 'Content-Type': 'application/json' }
     }
 
