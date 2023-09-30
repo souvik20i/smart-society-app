@@ -56,7 +56,7 @@ const Form = ({ firstname, lastname, email, edasId, conference, category,
             />
             <Select
                 label='Conference'
-                options={['IEEE IEMCON', 'IEEE UEMCON', 'IEEE CCWC']}
+                options={['IEEE AIIOT', 'IEEE UEMCON', 'IEEE CCWC']}
                 value={conference}
                 onChange={conferenceChangeHandler}
             />
