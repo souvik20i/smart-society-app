@@ -51,7 +51,7 @@ const RegistrationForm = () => {
 
     const edasIdChangeHandler = value => {
         setEdasId(value)
-        const regex = /^\d{7}$/
+        const regex = /^\d{6,7}$/
         if (value.match(regex)) {
             setIsEdasIdVaild(true)
         } else {

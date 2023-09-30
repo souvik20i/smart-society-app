@@ -44,7 +44,7 @@ const Form = ({ firstname, lastname, email, edasId, conference, firstnameChangeH
                 label={'Email is not valid!'}
             />
             <Input
-                placeholder={'7-Digit EDAS ID'}
+                placeholder={'EDAS ID'}
                 value={edasId}
                 onChangeText={edasIdChangeHandler}
                 isValid={isEdasIdValid}
