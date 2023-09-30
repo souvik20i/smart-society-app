@@ -6,11 +6,9 @@ import Input from './Input'
 import Select from './Select'
 import Register from './Register'
 
-const Form = ({ firstname, lastname, email, edasId, conference,
-    firstnameChangeHandler, lastnameChangeHandler, emailChangeHandler,
-    conferenceChangeHandler, edasIdChangeHandler,
-    isFirstnameValid, isLastnameValid, isEmailValid, isEdasIdValid,
-    feedback, feedbackHandler }) => {
+const Form = ({ firstname, lastname, email, edasId, conference, firstnameChangeHandler, lastnameChangeHandler,
+    emailChangeHandler, conferenceChangeHandler, edasIdChangeHandler, isFirstnameValid, isLastnameValid,
+    isEmailValid, isEdasIdValid, feedback, feedbackHandler }) => {
 
     const scrollRef = useRef()
     const scrollFeedbackHandler = message => {
@@ -46,7 +44,7 @@ const Form = ({ firstname, lastname, email, edasId, conference,
                 label={'Email is not valid!'}
             />
             <Input
-                placeholder={'7-Digit EDAS ID'}
+                placeholder={'EDAS ID'}
                 value={edasId}
                 onChangeText={edasIdChangeHandler}
                 isValid={isEdasIdValid}

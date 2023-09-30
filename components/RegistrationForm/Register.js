@@ -6,13 +6,12 @@ const Register = ({ data, isValidForm, onFeedback }) => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
     const {
-        firstname: fName, lastname: lName, email, edasId,
-        conference: conferenceName
+        firstname: fName, lastname: lName, email, edasId, conference: conferenceName
     } = data
 
     const postConfig = {
         method: 'post',
-        body: JSON.stringify({ fName, lName, email, conferenceName, edasId }),
+        body: JSON.stringify({ fName, lName, email, edasId, conferenceName, userType: 'userType', regCategory: 'regCategory' }),
         headers: { 'Content-Type': 'application/json' }
     }
 
